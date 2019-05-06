@@ -53,3 +53,6 @@ The models in this application are;
 ### Like (belongs_to :post)
 
 - Can be created by a User on a Post
+
+
+![Facelook Model ERD](facelook_model_erd.png)
