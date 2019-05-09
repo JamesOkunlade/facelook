@@ -10,5 +10,6 @@ class User < ApplicationRecord
   format: { with: /[a-z]+/i }
 
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 end
