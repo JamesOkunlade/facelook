@@ -20,4 +20,11 @@ class User < ApplicationRecord
           class_name: "FriendRequest", dependent: :destroy
 
 
+  has_many :friendships, foreign_key: :adder_id, dependent: :destroy
+  has_many :friendships_2, class_name: "Friendship", foreign_key: :added_id,
+            dependent: :destroy
+
+  has_many :friends, through: :friendships, source: :added
+
+
 end
