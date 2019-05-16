@@ -1,1 +1,7 @@
-<h3>This will be the news feed for all my posts</h3>
+<div class="">
+  <h4><%= post.user.first_name %></h4>
+  <p><%= post.content %></p>
+  <span class="timestamp">
+      Posted <%= time_ago_in_words(post.created_at) %> ago.
+  </span>
+</div>
