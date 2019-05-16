@@ -1,0 +1,7 @@
+<%= form_for current_user.posts.build do |f| %>
+  <div class="form-group">
+    <%= f.label :content, "Create new post:", class: "h2" %>
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
+  <%= f.submit class: "btn btn-secondary" %>
+<% end %>
