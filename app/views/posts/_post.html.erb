@@ -1,7 +1,71 @@
-<div class="">
-  <h4><%= post.user.first_name %></h4>
-  <p><%= post.content %></p>
-  <span class="timestamp">
-      Posted <%= time_ago_in_words(post.created_at) %> ago.
-  </span>
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex">
+      <div class="post-img">
+        <%= gravatar_for(post.user) %>
+      </div>
+      <div class="post-metadata">
+        <h4><%= get_full_name_for(post.user) %></h4>
+        <span class="timestamp">
+            <%= time_ago_in_words(post.created_at) %>
+        </span>
+      </div>
+    </div>
+
+    <p><%= post.content %></p>
+
+    <span>
+      <% if post.likes.count < 2 %>
+      (<span><%= post.likes.count %></span>) Like
+      <% else %>
+      (<span><%= post.likes.count %></span>) Likes
+      <% end %>
+      <%= render "likes/form", resource: post %>
+    </span>
+    <% if post.user == current_user %>
+        <%= link_to 'delete', post_path(post), method: :delete, class: 'text-danger' %>
+
+    <% end %>
+
+
+    <h5>(<span><%= post.comments.count %></span>) Comments</h5>
+    <%= render 'comments/form', resource: post %>
+    <% if post.comments.any? %>
+    <%#= link_to 'Load Comments', post_comments_path(post_id: post.id, comments_page: 1),
+            remote: true, id: "post-#{post.id}-comments-pagination-link", class: "btn btn-primary form-control my-2"%>
+    <% post.comments.each do |comment| %>
+      <div class="comment d-flex">
+        <div class="">
+          <%= gravatar_for(comment.user) %>
+        </div>
+        <div class="">
+          <h4><%= get_full_name_for(comment.user) %></h4>
+          <span class="timestamp">
+              <%= time_ago_in_words(comment.created_at) %>
+          </span>
+          <p><%= comment.content %></p>
+        </div>
+        <div class="">
+
+        </div>
+      </div>
+    <% end %>
+
+
+
+
+    <%#= render 'comments/comment' %>
+
+
+
+    <% end %>
+
+
+
+
+
+
+
+
+  </div>
 </div>
