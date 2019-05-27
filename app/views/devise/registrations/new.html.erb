@@ -3,6 +3,20 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= bootstrap_devise_error_messages! %>
 
+
+
+  <div class="form-group mb-0">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control"%>
+        <%= render 'devise/shared/field_error_messages', resource: resource, field: :first_name %>
+  </div>
+
+  <div class="form-group mb-0">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, autocomplete: "last_name", class: "form-control" %>
+        <%= render 'devise/shared/field_error_messages', resource: resource, field: :last_name %>
+  </div>
+
   <div class="form-group">
     <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>

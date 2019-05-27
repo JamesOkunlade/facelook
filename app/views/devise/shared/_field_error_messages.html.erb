@@ -1,0 +1,7 @@
+<% if resource.errors[field].any?  %>
+  <ul class="list-unstyled ml-3 mb-1">
+    <% resource.errors[field].each do |message| %>
+      <li><small class="text-danger"><%= message %></small></li>
+    <% end %>
+  </ul>
+<% end %>
