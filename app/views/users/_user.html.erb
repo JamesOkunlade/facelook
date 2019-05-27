@@ -1,0 +1,10 @@
+<li class="row list-group-item d-flex align-items-center">
+  <div class="col-3 p-0 m-0">
+  </div>
+  <div class="col-5 p-0 m-0 text-left">
+    <%= link_to get_full_name_for(user), user, class: "m-1" %>
+  </div>
+  <div class="col-4 p-0 friend_request-links m-0", id="friend_request-<%= user.id %>-links">
+    <%= render "friend_requests/form", resource: user %>
+  </div>
+</li>
