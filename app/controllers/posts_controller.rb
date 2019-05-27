@@ -1,23 +1,21 @@
 class PostsController < ApplicationController
-
-  before_action :require_authorized_user, only: [:destroy]
-
-
+  before_action :set_post, only: [:index]
+  # before_action :post_comments, only: [:index]
 
   def index
-    # Not the final implementation
-    @posts = Post.all
+    @received_requests = current_user.friend_requests_received.pending
+    @posts = current_user.feed
+    @comment = @post.comments
   end
 
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Post successfully created!!!"
-      # redirect_back fallback_location: root_path
-      redirect_to root_path
+      redirect_to root_url
     else
       flash[:danger] = "Something prevented post from being created"
-      render "new"
+      redirect_to root_path
     end
   end
 
@@ -30,17 +28,29 @@ class PostsController < ApplicationController
 
 
 
+  def post_comments
+    respond_to do |format|
+      if @post = Post.find_by(id: params[:post_id])
+        @comments = @post.comments
+        format.html { redirect_to @post }
+        format.js
+      else
+        format.html { redirect_back fallback_location: root_path, danger: "Something went wrong!" }
+        format.js
+      end
+    end
+  end
+
+
+
   private
 
     def post_params
       params.require(:post).permit(:content)
     end
 
-    def require_authorized_user
-      unless @post.user == current_user
-        flash[:danger] = "You are not authorized to delete this post"
-        redirect_to posts_path
-      end
+    def set_post
+      @post = Post.first
     end
 
 end
