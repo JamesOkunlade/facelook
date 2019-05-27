@@ -27,4 +27,31 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships, source: :added
 
 
+
+  def establish_friendship(other_user)
+    begin
+      self.friends.push(other_user)
+      other_user.friends.push(self)
+    rescue ActiveRecord::RecordNotUnique
+      self.errors.add(:friends, "You're already friends")
+      other_user.errors.add(:friends, "You're already friends")
+    end
+  end
+
+  def destroy_friendship(other_user)
+    self.friends.delete(other_user)
+    other_user.friends.delete(self)
+  end
+
+  def feed
+    friends_ids = self.friends.ids.join(',')
+    unless friends_ids.blank?
+      Post.where("user_id IN (#{friends_ids})
+                OR user_id = :user_id", user_id: id)
+    else
+      Post.where("user_id = :user_id", user_id: id)
+    end
+  end
+
+
 end
