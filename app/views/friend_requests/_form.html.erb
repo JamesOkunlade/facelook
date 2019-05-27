@@ -1,0 +1,6 @@
+<%= form_for current_user.friend_requests_sent.build, remote: true do |f| %>
+  <%= f.hidden_field :receiver_id, value: resource.id %>
+  <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+    <i class="fa fa-user-plus"></i> Add
+  <% end %>
+<% end %>
