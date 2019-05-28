@@ -4,9 +4,19 @@
       <h2>Your friends</h2>
       <ul class="list-group">
         <% @user.friends.each do |friend| %>
-          <li class="list-group-item d-flex align-items-center">
-            <%= link_to get_full_name_for(friend), friend %>
-          </li>
+
+        <div class="list d-flex">
+          <div class="post-img">
+            <%= gravatar_for(friend) %>
+          </div>
+          <div class="">
+            <h5><%= link_to get_full_name_for(friend), friend %></h5>
+            <h5><%= link_to "Unfriend", friendship_path(friend), method: :delete, class: 'text-danger' %></h5>
+          </div>
+        </div>
+
+
+
         <% end %>
       </ul>
     <% end %>
