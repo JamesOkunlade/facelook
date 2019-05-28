@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   # before_action :post_comments, only: [:index]
 
   def index
+    # Not the final implementation
     @received_requests = current_user.friend_requests_received.pending
     @posts = current_user.feed
     @comment = @post.comments
