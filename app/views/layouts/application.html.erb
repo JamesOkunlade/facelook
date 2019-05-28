@@ -34,7 +34,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav r-float navbar-nav">
             <li><%= link_to "Home", root_path  %></li>
-            <li><%= link_to "#{current_user.first_name}", root_path  %></li>
+            <li><%= link_to "#{current_user.first_name}", current_user  %></li>
             <li><%= link_to "Find friends", users_path  %></li>
             <li><%= link_to "Friend requests", friend_requests_path  %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
