@@ -53,7 +53,7 @@
             <h4>User profile</h4>
             <ul class="nav nav-list">
               <li><%= gravatar_for current_user %></li>
-              <li><%= link_to get_full_name_for(current_user), "/path1"  %></li>
+              <li><h4><%= link_to get_full_name_for(current_user), current_user  %></h4></li>
               <li>Full-Stack SWE | Entrepreneur</li>
               <hr>
               <li><%= link_to "Friends, #{current_user.friends.count}", user_friends_path(current_user)  %></li>
