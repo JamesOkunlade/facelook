@@ -1,3 +1,4 @@
+
 <div class="card">
   <div class="card-body">
     <div class="d-flex">
@@ -22,17 +23,15 @@
       <% end %>
       <%= render "likes/form", resource: post %>
     </span>
+
     <% if post.user == current_user %>
         <%= link_to 'delete', post_path(post), method: :delete, class: 'text-danger' %>
-
     <% end %>
 
 
     <h5>(<span><%= post.comments.count %></span>) Comments</h5>
     <%= render 'comments/form', resource: post %>
     <% if post.comments.any? %>
-    <%#= link_to 'Load Comments', post_comments_path(post_id: post.id, comments_page: 1),
-            remote: true, id: "post-#{post.id}-comments-pagination-link", class: "btn btn-primary form-control my-2"%>
     <% post.comments.each do |comment| %>
       <div class="comment d-flex">
         <div class="">
@@ -50,22 +49,6 @@
         </div>
       </div>
     <% end %>
-
-
-
-
-    <%#= render 'comments/comment' %>
-
-
-
     <% end %>
-
-
-
-
-
-
-
-
   </div>
 </div>

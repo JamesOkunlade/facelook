@@ -1,12 +1,11 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:index]
-  # before_action :post_comments, only: [:index]
 
   def index
-    # Not the final implementation
     @received_requests = current_user.friend_requests_received.pending
     @posts = current_user.feed
-    @comment = @post.comments
+    @comments
+    # @comment = @post.comments
   end
 
   def create
@@ -51,7 +50,9 @@ class PostsController < ApplicationController
     end
 
     def set_post
-      @post = Post.first
+      if @post = Post.find_by(id: params[:post_id])
+        @comments = @post.comments
+      end
     end
 
 end
