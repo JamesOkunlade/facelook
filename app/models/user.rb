@@ -63,5 +63,12 @@ class User < ApplicationRecord
     end
   end
 
+  after_create :welcome_send
+
+  def welcome_send
+    UserMailer.with(user: @user).welcome_email.deliver_now
+  end
+
+
 
 end
