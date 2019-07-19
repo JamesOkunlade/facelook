@@ -29,6 +29,19 @@ class User < ApplicationRecord
 
 
 
+
+
+  def friendable_users
+
+    friends               = self.friends.ids
+    sent_request_to       = self.friend_requests_sent.pending.pluck(:receiver_id)
+    received_request_from = self.friend_requests_received.pending.pluck(:sender_id)
+    friend_or_has_pending_request = friends + [self.id] + sent_request_to + received_request_from
+    @users = User.all.where.not("id IN (?)", friend_or_has_pending_request)
+
+  end
+
+
   def establish_friendship(other_user)
     begin
       self.friends.push(other_user)

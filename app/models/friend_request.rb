@@ -1,8 +1,6 @@
 class FriendRequest < ApplicationRecord
   scope :pending, -> { where(status: 0) }
 
-  validates :sender, presence: true
-  validates :receiver, presence: true
   validates :status, presence: true, inclusion: { in: [-1, 0, 1] }
 
 

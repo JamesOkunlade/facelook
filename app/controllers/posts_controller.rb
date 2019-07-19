@@ -5,7 +5,6 @@ class PostsController < ApplicationController
     @received_requests = current_user.friend_requests_received.pending
     @posts = current_user.feed
     @comments
-    # @comment = @post.comments
   end
 
   def create
@@ -27,23 +26,13 @@ class PostsController < ApplicationController
   end
 
 
-
-  def post_comments
-    respond_to do |format|
-      if @post = Post.find_by(id: params[:post_id])
-        @comments = @post.comments
-        format.html { redirect_to @post }
-        format.js
-      else
-        format.html { redirect_back fallback_location: root_path, danger: "Something went wrong!" }
-        format.js
-      end
-    end
-  end
-
-
-
   private
+
+
+    def post_comments
+      @post = Post.find_by(id: params[:post_id])
+      @comments = @post.comments
+    end
 
     def post_params
       params.require(:post).permit(:content)
