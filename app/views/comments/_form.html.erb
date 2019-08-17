@@ -1,0 +1,7 @@
+<%= form_for current_user.comments.build, remote: true, html: { id: "post-#{resource.id}-comment-form"} do |f| %>
+  <%= f.hidden_field :post_id, value: resource.id %>
+  <div class="form-group">
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
+  <%= f.submit "Comment", class: "btn btn-primary" %>
+<% end %>

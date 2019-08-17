@@ -1,0 +1,10 @@
+<div class="new-post">
+  <%= form_for current_user.posts.build do |f| %>
+    <div class="form-group">
+      <%= f.label :content, "Create post", class: "h5 title" %>
+      <%= f.text_area :content, class: "form-control", placeholder: "What's on your mind?" %>
+    </div>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+
+</div>

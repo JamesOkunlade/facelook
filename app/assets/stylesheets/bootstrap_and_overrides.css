@@ -1,0 +1,14 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Static version of css will use Glyphicons sprites by default
+  =require twitter-bootstrap-static/sprites
+*/
+.form-control {
+  border-radius: 0;
+}
+
+.well ul li {
+  font-size: 13px;
+  line-height: 2.5em;
+}

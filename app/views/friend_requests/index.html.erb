@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-6">
+    <% if @sent_requests.any?  %>
+      <h4>Sent Friend Requests</h4>
+      <ul class="list-group">
+        <% @sent_requests.each do |request| %>
+          <li class="row list-group-item d-flex justify-content-between align-items-center">
+            <div class="col-5 p-0 m-0 text-left">
+              <%= link_to get_full_name_for(request.receiver), request.receiver %>
+            </div>
+            <div class="col-4 p-0 m-0 friend_request-links", id="friend_request-<%= request.receiver.id %>-links">
+              <%= render 'friend_requests/links/cancel', resource: request %>
+            </div>
+          </li>
+        <% end %>
+    <% end %>
+
+    <% if @received_requests.any?  %>
+      <h4>Received Friend Requests</h4>
+      <ul class="list-group">
+        <% @received_requests.each do |request| %>
+          <li class="row list-group-item d-flex justify-content-between align-items-center">
+
+            <div class="col-5 p-0 m-0 text-left">
+              <%= link_to get_full_name_for(request.sender), request.sender %>
+            </div>
+            <div class="col-4 p-0 m-0 friend_request-links", id="friend_request-<%= request.sender.id %>-links">
+              <%= render 'friend_requests/links/accept', resource: request %>
+              <%= render 'friend_requests/links/decline', resource: request %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+</div>

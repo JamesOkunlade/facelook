@@ -1,0 +1,24 @@
+<div class="row justify-content-center">
+  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-6">
+    <% if @user.friends.any?  %>
+      <h2>Your friends</h2>
+      <ul class="list-group">
+        <% @user.friends.each do |friend| %>
+
+        <div class="list d-flex">
+          <div class="post-img">
+            <%= gravatar_for(friend) %>
+          </div>
+          <div class="">
+            <h5><%= link_to get_full_name_for(friend), friend %></h5>
+            <h5><%= link_to "Unfriend", friendship_path(friend), method: :delete, class: 'text-danger' %></h5>
+          </div>
+        </div>
+
+
+
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

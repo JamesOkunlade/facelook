@@ -1,0 +1,18 @@
+<li class="list-group-item", id="comment-<%= comment.id %>">
+  <div class="row d-flex align-items-center mb-2">
+    <div class="ml-3">
+      <%= link_to get_full_name_for(comment.user), comment.user %>
+      <small class="text-muted mb-2 d-block", style="font-size:0.7rem;">
+        posted <%= time_ago_in_words comment.created_at %> ago
+      </small>
+    </div>
+    <% if comment.user == current_user %>
+      <div class="ml-auto mr-3">
+        <%= link_to comment_path(comment), method: :delete, remote: true, class: "text-danger" do %>
+          <i class="fa fa-trash-o" style="font-size:1rem;"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <p class="mb-0"><%= comment.content %></p>
+</li>
