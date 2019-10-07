@@ -33,6 +33,6 @@ To start the server: `rails server`
 
 
 ## Author
-Lade James
+[James Okunlade](https://github.com/JamesOkunlade)
 
-Adnan Afsari
+[Adnan Afsari](https://github.com/AdnanAfsari)
