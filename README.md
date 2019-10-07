@@ -1,11 +1,6 @@
-# facelook
+# Facelook
 Facelook is a clone of some of the features of the Facebook app. Users can make friends, post contents and different posts can be liked and commented on by other users.
 > https://www.facebook.com
-
-## Author
-Lade James
-
-Adnan Afsari
 
 ## Technologies
 Ruby
@@ -30,3 +25,9 @@ Rails version 5.2.3
 `rails db:migrate`
 
 To start the server: `rails server`
+
+
+## Author
+Lade James
+
+Adnan Afsari
