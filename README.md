@@ -31,6 +31,11 @@ Rails version 5.2.3
 
 To start the server: `rails server`
 
+## Future improvement
+
+- Change the frontend to React.js
+- Implement live chat with friends
+
 
 ## Author
 [James Okunlade](https://github.com/JamesOkunlade)
