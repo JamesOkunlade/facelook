@@ -4,7 +4,7 @@ Facelook is a clone of some of the features of the Facebook app. Users can make 
 
 
 ![facelook login](/model-documentation/login.png?raw=true "Facelook login")
-
+![](login.png)
 
 ## Technologies
 Ruby
