@@ -2,7 +2,10 @@
 Facelook is a clone of some of the features of the Facebook app. Users can make friends, post contents and different posts can be liked and commented on by other users.
 > https://www.facebook.com
 
-![](login.png)
+![facelook login](login.png "Facelook login")
+
+
+![facelook home](home.png "Facelook home")
 
 ## Technologies
 Ruby
