@@ -3,7 +3,7 @@ Facelook is a clone of some of the features of the Facebook app. Users can make 
 > https://www.facebook.com
 
 
-![facelook login](/model-documentation/login.png "Facelook login")
+![facelook login](/model-documentation/login.png?raw=true "Facelook login")
 
 
 ## Technologies
