@@ -20,6 +20,8 @@ Ruby version 2.6.2
 
 Rails version 5.2.3
 
+If you don't have RVM installed you can set it up using this [guide](https://rvm.io/rvm/install)
+
 ## Installation
 > Open your git bash and **cd** to the location you'd like to put your files the run the command below.
 
