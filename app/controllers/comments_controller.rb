@@ -3,10 +3,8 @@
 # CommentsController
 class CommentsController < ApplicationController
   def post_comments
-    if @post = Post.find_by(id: params[:post_id])
-      @comments = @post.comments
-      # @comments = @post.comments.paginate(page: params[:page], per_page: 3)
-    end
+    @post = Post.find_by(id: params[:post_id])
+    @comments = @post.comments
 
     respond_to do |format|
       format.html { redirect_to @post }
@@ -29,5 +27,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content, :post_id)
   end
-
 end

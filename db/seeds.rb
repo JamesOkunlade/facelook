@@ -6,7 +6,7 @@ User.create!(first_name: 'James',
              email: 'james.okunlade@gmail.com',
              password: 'password')
 
-(1..50).each do |i|
+(1..15).each do |i|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = "user#{i}@mail.com"
@@ -16,21 +16,21 @@ end
 
 # Generate friendships
 user = User.first
-User.all.where.not(id: user.id).limit(30).each do |u|
+User.all.where.not(id: user.id).limit(10).each do |u|
   user.friends << u
   u.friends << user
 end
 
 # Generate Posts
-User.take(7).each do |u|
-  10.times do
+User.take(5).each do |u|
+  5.times do
     u.posts.create!(content: Faker::Lorem.paragraph_by_chars(number: 200))
   end
 end
 
 # Generate Comments
 posts = Post.take(5)
-User.take(10).each do |u|
+User.take(5).each do |u|
   posts.each do |p|
     p.comments.create!(user: u, content: Faker::Lorem.paragraph_by_chars(number: 150))
   end

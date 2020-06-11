@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# PostsController
 class PostsController < ApplicationController
   before_action :set_post, only: [:index]
 
@@ -10,10 +13,10 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "Post successfully created!!!"
+      flash[:success] = 'Post successfully created!!!'
       redirect_to root_url
     else
-      flash[:danger] = "Something prevented post from being created"
+      flash[:danger] = 'Something prevented post from being created'
       redirect_to root_path
     end
   end
@@ -21,27 +24,22 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    flash[:success] = "Post successfully deleted!!!"
+    flash[:success] = 'Post successfully deleted!!!'
     redirect_to posts_path
   end
 
-
   private
 
+  def post_comments
+    @post = Post.find_by(id: params[:post_id])
+    @comments = @post.comments
+  end
 
-    def post_comments
-      @post = Post.find_by(id: params[:post_id])
-      @comments = @post.comments
-    end
+  def post_params
+    params.require(:post).permit(:content)
+  end
 
-    def post_params
-      params.require(:post).permit(:content)
-    end
-
-    def set_post
-      if @post = Post.find_by(id: params[:post_id])
-        @comments = @post.comments
-      end
-    end
-
+  def set_post
+    @comments = @post.comments if @post == Post.find_by(id: params[:post_id])
+  end
 end

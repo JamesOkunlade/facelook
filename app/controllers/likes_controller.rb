@@ -1,12 +1,14 @@
-class LikesController < ApplicationController
+# frozen_string_literal: true
 
+# LikesController
+class LikesController < ApplicationController
   def create
     @like = current_user.likes.build(like_params)
     if @like.save
-      flash[:success] = "Post Liked"
+      flash[:success] = 'Post Liked'
       redirect_to root_url
     else
-      flash.now[:danger] = "Something went wrong"
+      flash.now[:danger] = 'Something went wrong'
       render 'new'
     end
   end
@@ -16,7 +18,6 @@ class LikesController < ApplicationController
     @like.destroy
     redirect_to root_url
   end
-
 
   private
 
