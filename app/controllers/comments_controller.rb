@@ -1,38 +1,33 @@
+# frozen_string_literal: true
+
+# CommentsController
 class CommentsController < ApplicationController
-
-
   def post_comments
+    if @post = Post.find_by(id: params[:post_id])
+      @comments = @post.comments
+      # @comments = @post.comments.paginate(page: params[:page], per_page: 3)
+    end
+
     respond_to do |format|
-      if @post = Post.find_by(id: params[:post_id])
-        @comments = @post.comments
-        format.html { redirect_to @post }
-        format.js
-      else
-        format.html { redirect_back fallback_location: root_path, danger: "Something went wrong!" }
-        format.js
-      end
+      format.html { redirect_to @post }
+      format.js
     end
   end
 
   def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
-      flash[:success] = "Comment successfully added!!!"
-      redirect_to root_path
+      flash[:success] = 'Comment successfully added!!!'
     else
-      flash[:danger] = "Something prevented comment from being created"
-      redirect_to root_path
+      flash[:danger] = 'Something prevented comment from being created'
     end
-  end
-
-  def destroy
-
+    redirect_to root_path
   end
 
   private
 
-    def comment_params
-      params.require(:comment).permit(:content, :post_id)
-    end
+  def comment_params
+    params.require(:comment).permit(:content, :post_id)
+  end
 
 end
