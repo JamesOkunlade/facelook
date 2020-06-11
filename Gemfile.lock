@@ -85,6 +85,8 @@ GEM
     devise-bootstrap-views (1.1.0)
     erubi (1.8.0)
     execjs (2.7.0)
+    faker (2.12.0)
+      i18n (>= 1.6, < 2)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.10.0)
@@ -256,6 +258,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   devise-bootstrap-views
+  faker (~> 2.12)
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener
@@ -278,4 +281,4 @@ RUBY VERSION
    ruby 2.6.2p47
 
 BUNDLED WITH
-   2.0.1
+   2.0.2

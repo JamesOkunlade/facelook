@@ -1,5 +1,7 @@
-class Friendship < ApplicationRecord
+# frozen_string_literal: true
 
-  belongs_to :adder, class_name: "User"
-  belongs_to :added, class_name: "User"
+# A Friendship Model
+class Friendship < ApplicationRecord
+  belongs_to :adder, class_name: 'User'
+  belongs_to :added, class_name: 'User'
 end
