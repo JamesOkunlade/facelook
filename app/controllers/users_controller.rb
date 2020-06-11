@@ -2,7 +2,7 @@
 
 # UsersController
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: %i[show friends]
 
   def index
     @users = current_user.friendable_users

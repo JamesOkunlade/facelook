@@ -59,9 +59,9 @@ class User < ApplicationRecord
     end
   end
 
-  # after_create :welcome_send
-  #
-  # def welcome_send
-  #   UserMailer.with(user: self).welcome_email.deliver_now
-  # end
+  after_create :welcome_send
+
+  def welcome_send
+    UserMailer.with(user: self).welcome_email.deliver_now
+  end
 end

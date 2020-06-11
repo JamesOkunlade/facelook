@@ -27,9 +27,13 @@ If you don't have RVM installed you can set it up using this [guide](https://rvm
 
 `git clone https://github.com/JamesOkunlade/facelook`
 
-**cd** to into the project folder and install using `bundle install --withoutproduction`
+**cd** to into the project folder and install using `bundle install`
+
+`rails db:create`
 
 `rails db:migrate`
+
+`rails db:seed`
 
 To start the server: `rails server`
 

@@ -40,6 +40,7 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @comments = @post.comments if @post == Post.find_by(id: params[:post_id])
+    @post = Post.find_by(id: params[:post_id])
+    @comments = @post.comments if @post
   end
 end
