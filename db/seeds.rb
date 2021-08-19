@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 # Generate Users
-User.create!(first_name: 'James',
-             last_name: 'Okunlade',
-             email: 'james.okunlade@gmail.com',
+User.create!(first_name: 'Adnan',
+             last_name: 'Afsari',
+             email: 'adnanafsari.swe@gmail.com',
              password: 'password')
 
 (1..15).each do |i|
